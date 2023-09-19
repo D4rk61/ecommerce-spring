@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,4 +29,7 @@ public class Producto {
 
     @Min(1)
     private Integer cantidad = 1;
+
+    @ManyToOne(targetEntity = Usuario.class)
+    private Usuario usuario;
 }

@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.List;
 
 @Getter
 @Setter
@@ -36,4 +37,10 @@ public class Usuario {
 
     // rol de usuario { "admin", "user"}
     private String tipo;
+
+    @OneToMany(mappedBy = "usuario", targetEntity = Producto.class)
+    private List<Producto> productos;
+
+    @OneToMany(mappedBy = "usuario", targetEntity = Orden.class)
+    private List<Orden> ordenes;
 }

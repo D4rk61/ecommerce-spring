@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "orden")
+@Table(name = "ec_ordenes")
 @NoArgsConstructor  @AllArgsConstructor @ToString
 public class Orden {
 
@@ -27,4 +27,9 @@ public class Orden {
 
     private Double total;
 
+    @ManyToOne(targetEntity = Usuario.class)
+    private Usuario usuario;
+
+    @OneToOne(targetEntity = DetalleOrden.class, mappedBy = "orden")
+    private DetalleOrden detalle;
 }

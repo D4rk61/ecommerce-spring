@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor  @AllArgsConstructor @ToString
-@Table(name = "detalle_orden")
+@Table(name = "ec_detalle_ordenes")
 public class DetalleOrden {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -22,4 +22,10 @@ public class DetalleOrden {
     private Double precio;
 
     private Double total;
+
+    @OneToOne(targetEntity = Orden.class)
+    private Orden orden;
+
+    @ManyToOne(targetEntity = Producto.class)
+    private Producto producto;
 }
